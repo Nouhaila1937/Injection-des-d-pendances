@@ -9,6 +9,11 @@ public class MetierImpl implements IMetier {
         this.dao = dao;
     }
 
+
+    public MetierImpl(IDao dao) {
+        this.dao = dao;
+    }
+
     @Override
     public double calcul() {
         double data = dao.getData();
