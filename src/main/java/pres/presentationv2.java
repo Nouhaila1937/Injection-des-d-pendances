@@ -5,6 +5,7 @@ import metier.IMetier;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Method;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public class presentationv2 {
         Scanner sc = new Scanner(new File("config.txt"));
         String daoclassname = sc.nextLine();
 
-        // Chargement dynamique de la classe
+        // Chargement dynamique de la classe via constructeur
         Class cdao =Class.forName(daoclassname);
         //Si tu veux instancier un objet de cette classe, tu peux utiliser :
         //Object object = cdao.newInstance();
@@ -23,6 +24,13 @@ public class presentationv2 {
         String metierclassname = sc.nextLine();
         Class cmetier= Class.forName(metierclassname);
         IMetier metier = (IMetier) cmetier.newInstance();
+
+        //une autre méthode pour faire le metier.setDao(dao)
+        //Chargement dynamique de la classe via setter
+        Method setDao =cmetier.getDeclaredMethod("setDao", IDao.class);
+        setDao.invoke(metier,dao);
+
+        System.out.println("RES= "+metier.calcul());
 
     }
 }
