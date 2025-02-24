@@ -18,19 +18,19 @@ public class presentationv2 {
         Class cdao =Class.forName(daoclassname);
         //Si tu veux instancier un objet de cette classe, tu peux utiliser :
         //Object object = cdao.newInstance();
-        IDao dao = (IDao) cdao.newInstance();
-        System.out.println(dao.getData());
+        IDao dao = (IDao) cdao.getConstructor().newInstance();
+        //System.out.println(dao.getData());
 
         String metierclassname = sc.nextLine();
         Class cmetier= Class.forName(metierclassname);
-        IMetier metier = (IMetier) cmetier.newInstance();
+        IMetier metier = (IMetier)cmetier.getConstructor().newInstance();
 
         //une autre méthode pour faire le metier.setDao(dao)
         //Chargement dynamique de la classe via setter
         Method setDao =cmetier.getDeclaredMethod("setDao", IDao.class);
         setDao.invoke(metier,dao);
 
-        System.out.println("RES= "+metier.calcul());
+        System.out.println("RES = "+metier.calcul());
 
     }
 }
