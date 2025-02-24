@@ -2,7 +2,7 @@ package metier;
 import dao.IDao;
 
 public class MetierImpl implements IMetier {
-    private IDao dao;
+    private IDao dao=null;
 
     // Setter pour l'injection de dépendance
     public void setDao(IDao dao) {
