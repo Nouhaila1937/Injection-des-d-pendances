@@ -8,7 +8,7 @@ public class presentation_spring_xml {
     public static void main(String[] args) {
         //injection on utilisant spring version xml
         ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
-        IMetier metier = (IMetier) context.getBean("metier");
+        IMetier metier = (IMetier) context.getBean(IMetier.class);
         System.out.println("RES= "+metier.calcul());
 
     }
