@@ -1,6 +1,7 @@
 package pres;
 
 import dao.IDao;
+import metier.IMetier;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +19,10 @@ public class presentationv2 {
         //Object object = cdao.newInstance();
         IDao dao = (IDao) cdao.newInstance();
         System.out.println(dao.getData());
+
+        String metierclassname = sc.nextLine();
+        Class cmetier= Class.forName(metierclassname);
+        IMetier metier = (IMetier) cmetier.newInstance();
 
     }
 }
