@@ -1,6 +1,8 @@
 package metier;
 import dao.IDao;
+import org.springframework.stereotype.Component;
 
+//@Component("metier")
 public class MetierImpl implements IMetier {
     private IDao dao=null;
 
